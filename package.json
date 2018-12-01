@@ -1,0 +1,19 @@
+{
+  "name": "weedinize",
+  "version": "1.0.0",
+  "description": "Description of quality of weed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbrahamTesla/Weedinize.git"
+  },
+  "author": "\"ACVJ\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbrahamTesla/Weedinize/issues"
+  },
+  "homepage": "https://github.com/AbrahamTesla/Weedinize#readme"
+}
