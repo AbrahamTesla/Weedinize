@@ -1,6 +1,6 @@
 *{
 	margin:0 auto;
-
+	box-sizing: border-box;
 }
 
 h1,
@@ -60,4 +60,13 @@ h6 {
 	color: #fff;
 	/* float: right; */
 	margin-left: 1250px;
+}
+img {
+	height:200px;
+	width:200px;
+	margin: 10px 0 0 10px;
+	float:left;
+}
+.figure-caption{
+	margin: 10px 0 0 10px;
 }
