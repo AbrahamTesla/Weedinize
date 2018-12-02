@@ -1,6 +1,10 @@
 *{
-	margin:0 auto;
+	margin:0;
+	padding:0;
 	box-sizing: border-box;
+}
+.row{
+	max-width: 1140px;
 }
 
 h1,
@@ -13,7 +17,6 @@ h1,
 h2,
 h3,
 h4,
-h5,
 h6 {
 	margin-bottom: .5rem;
 	font-family: inherit;
@@ -62,11 +65,13 @@ h6 {
 	margin-left: 1250px;
 }
 img {
-	height:200px;
-	width:200px;
-	margin: 10px 0 0 10px;
-	float:left;
+	height:286px;
+	width:180px;	
 }
-.figure-caption{
-	margin: 10px 0 0 10px;
+.imageThumbnail{
+	margin-top:2%;
 }
+.uploadForm{
+   margin-top:3%;
+}
+
