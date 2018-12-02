@@ -25,7 +25,7 @@ h6 {
 	font-size: 1.25rem;
 	line-height: 1.5;
 	border-radius: .3rem;
-	margin-left: 710px;
+	margin-left: 670px;
 	background-color: #28a745;
 }
 .jumbotron {
@@ -43,9 +43,7 @@ h6 {
 .foot {
 	margin-top: 303px;
 }
-.animated.delay-1s {
-	-webkit-animation-delay: 1s;
-	animation-delay: 1s;
+.lead {
 	font-family: cursive;
 }
 .navbar-dark .navbar-nav .active > .nav-link,
