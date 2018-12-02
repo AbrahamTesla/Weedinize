@@ -8,4 +8,4 @@
   ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
   
   Best Seller Page
-  ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+  ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/bestSellerPage.png)
