@@ -60,21 +60,28 @@
                     var xhttp = new XMLHttpRequest()
                     var img_url = document.getElementById('image_url').value; console.log(img_url);
                     var results_img = document.getElementById('results_img');
-                    var results = document.getElementById('results');
+                    var results_div = document.getElementById('results_div');
                     var results_percent = document.getElementById('results_percent');
+                    var results_type = document.getElementById('results_type');
+
                     fetch('/calculate',
                     {
                       method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: img_url
+                      headers: {
+                        'Accept': 'application/json',
+                         'Content-Type': 'application/json' },
+                      body: JSON.stringify({img_url})
                     }
-                    ).then(function(percent){
-                      results.style.visibility = 'visible';
-                      results_img.src = img_url;
-                      results_percent.innerHTML = percent;
-                      console.log(percent);
+                    ).then(function(results){
+                      results.json().then(function(results) {
+                        console.log(results);
+                        results_div.style.visibility = 'visible';
+                        results_img.src = img_url;
+                        results_percent.innerHTML = results.percent;
+                        results_type.innerHTML = results.type;
+                        console.log(results.percent);
+                      });
                     });
-                 
                     "
 
                     >Submit</button>
@@ -82,13 +89,15 @@
           </div>
 
               
-            <section class="imageThumbnail" id='results'> 
+            <section class="imageThumbnail" id='results_div'> 
               <div class="row">
                   <div class="col-lg-6">
                       <div class="card" style="width: 18rem;">
-                          <img class="card-img-top" id="results_img" src="https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/Cannabis%20indica.jpeg?raw=true" alt="cannabisIndica">
+                          <img class="card-img-top" id="results_img" 
+                          src="https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/Cannabis%20indica.jpeg?raw=true" 
+                          alt="cannabisIndica">
                           <div class="card-body">
-                            <h5 class="card-title">Cannabis Indica</h5>
+                            <h5 class="card-title" id='results_type'>Cannabis Indica</h5>
                             <p class="card-text" id ="results_percent">Percentage goes here %</p>
                           </div>
                         </div>
