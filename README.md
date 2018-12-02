@@ -5,7 +5,7 @@
   ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/indexPage.png)
   
   Upload Page
-  ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+  ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/uploadPage.png)
   
   Best Seller Page
   ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/bestSellerPage.png)
