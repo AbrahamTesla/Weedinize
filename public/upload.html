@@ -77,8 +77,12 @@
                         console.log(results);
                         results_div.style.visibility = 'visible';
                         results_img.src = img_url;
-                        results_percent.innerHTML = results.percent;
-                        results_type.innerHTML = results.type;
+                        formatted_percent = results.percent * 100;
+                        formatted_percent = Math.floor(formatted_percent);
+                        formatted_percent = formatted_percent.toString();
+                        formatted_percent = formatted_percent + ' %'
+                        results_percent.innerHTML = formatted_percent;
+                        results_type.innerHTML = results.type
                         console.log(results.percent);
                       });
                     });

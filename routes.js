@@ -7,26 +7,24 @@ const app = new Clarifai.App({
     apiKey: '7934b3f0139445e68b0ce91485e6c43e'
 });
 
-var calculate_type = (url) => {
-    var promise = new Promise((resolve, reject)=>{
+var calculate_type = async (url) => {
 
     let percentages = [];
-    let largest = 0;
+    let largest;
     let type;
-    app.models.initModel({id: "Cannabis", version: "886e67b299024fa99e578ef884c88eca"})
-            .then(generalModel => {
-            return generalModel.predict(url);
-            })
-            .then(response => {
-            var concepts = response['outputs'][0]['data']['concepts'];
+    let generalModel = await app.models.initModel({id: "Cannabis", version: "886e67b299024fa99e578ef884c88eca"});
+    let response = await generalModel.predict(url);  
+    var concepts = response['outputs'][0]['data']['concepts'];
             console.log(concepts);
             for(let i =0; i < concepts.length; i++) {
                 percentages.push(concepts[i].value);
             };
+            console.log(percentages);
             percentages.sort((a, b) => b - a);
-            percentages[0] = largest;
+            largest = percentages[0];
             for (let i=0; i<concepts.length;i++) {
                 console.log('>>>>', i);
+                console.log(concepts[i].value)
                 if (concepts[i].value == largest) {
                     type = concepts[i].name;
                 }
@@ -38,14 +36,11 @@ var calculate_type = (url) => {
             //         type=concepts[i];
             //     }
             // };
-            console.log(largest);
+            console.log('largest>> ', largest);
             let data = {percent: largest, type: type};
-            resolve(data);
-            });
-            return promise;
-            }).catch(err =>  {
-                console.error(err);
-            });
+            console.log(data);
+            return data;
+
 };
 
 router.get('/', function(req, res) {
@@ -67,7 +62,7 @@ router.get('/upload', function(req, res) {
 router.post('/calculate', async function(req, res) {
     console.log(req.body);
     let results = await calculate_type(req.body.img_url);
-    console.log('<<<<<', results);
+    console.log('<<<<<!!!', results);
    // let results = {percent: 40, type: 'sativa!'}
     res.json(results);
 });
