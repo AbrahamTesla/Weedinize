@@ -77,3 +77,7 @@ img {
 #results_div {
 	visibility: hidden;
 }
+#gitHub {
+	float: right;
+	padding-right:10px;
+}
