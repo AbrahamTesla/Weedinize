@@ -2,6 +2,7 @@ const express = require("express");
 var app = express();
 var routes = require("./routes");
 var bodyParser = require('body-parser');
+var ENV = require("dotenv").config()
 
 
 app.use(bodyParser());
