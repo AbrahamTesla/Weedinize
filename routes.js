@@ -1,7 +1,7 @@
 var router = require("express").Router();
 var path = require("path");
 const ENV = require("dotenv");
-ENV = dotenv.config();
+ENV.config();
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
