@@ -8,4 +8,4 @@
   ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/uploadPage.png)
   
   Best Seller Page
-  ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/bestSellerPage.png)
+  ![alt text](https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/recommendedPage.png)
