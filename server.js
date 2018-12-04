@@ -1,16 +1,18 @@
-const Clarifai = require('clarifai');
+const express = require("express");
+var app = express();
+var routes = require("./routes");
+var bodyParser = require('body-parser');
 
-const app = new Clarifai.App({
- apiKey: '7934b3f0139445e68b0ce91485e6c43e'
+
+app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.text({type: 'json'}));
+app.use(bodyParser.json());
+
+app.use(express.static('./public'));
+
+app.use("/", routes);
+
+app.server = app.listen(8080, function(){
+  console.log('Weedinize on '+ app.server.address().port)
 });
-
-app.models.initModel({id: "Cannabis", version: "24b6f68b1a654372a6f17c2eab7e71f3"})
-      .then(generalModel => {
-        return generalModel.predict("https://howtogrowmarijuana.com/wp-content/uploads/2015/12/Indica-Phenotype-Short-Fat-Leaves.jpg");
-      })
-      .then(response => {
-        var concepts = response['outputs'][0]['data']['concepts'];
-        console.log(concepts);
-      }).catch(err =>  {
-          console.error(err);
-      })

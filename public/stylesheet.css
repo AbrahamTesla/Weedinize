@@ -74,4 +74,6 @@ img {
 .uploadForm{
    margin-top:3%;
 }
-
+#results_div {
+	visibility: hidden;
+}

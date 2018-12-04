@@ -15,7 +15,7 @@
   <body>
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand " href="#">Weedinize</a>
+          <a class="navbar-brand " href="/">Weedinize</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,7 +29,7 @@
                 <a class="nav-link" href="#">Sign In </a>
               </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="bestSeller.html">Best Seller</a>
+                <a class="nav-link" id='rec' href="recommended.html">Recommended</a>
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -44,27 +44,65 @@
                 <form>
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <input class="form-control" id="image" placeholder="Upload Image Url">
+                        <input class="form-control" id="image_url" placeholder="Upload Image Url">
                     </div>
                     <!-- <div class="form-group">
+                               
+
                       <label for="exam">Email address</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div> -->
                     
-                    <button type="button" class="btn btn-success" id="submit">Submit</button>
+                    <button type="button" class="btn btn-success" id="submit"
+                    onclick=
+                    "
+                    var xhttp = new XMLHttpRequest()
+                    var img_url = document.getElementById('image_url').value; console.log(img_url);
+                    var results_img = document.getElementById('results_img');
+                    var results_div = document.getElementById('results_div');
+                    var results_percent = document.getElementById('results_percent');
+                    var results_type = document.getElementById('results_type');
+
+                    fetch('/calculate',
+                    {
+                      method: 'POST',
+                      headers: {
+                        'Accept': 'application/json',
+                         'Content-Type': 'application/json' },
+                      body: JSON.stringify({img_url})
+                    }
+                    ).then(function(results){
+                      results.json().then(function(results) {
+                        console.log(results);
+                        results_div.style.visibility = 'visible';
+                        results_img.src = img_url;
+                        formatted_percent = results.percent * 100;
+                        formatted_percent = Math.floor(formatted_percent);
+                        formatted_percent = formatted_percent.toString();
+                        formatted_percent = formatted_percent + ' %'
+                        results_percent.innerHTML = formatted_percent;
+                        results_type.innerHTML = results.type
+                        console.log(results.percent);
+                      });
+                    });
+                    "
+
+                    >Submit</button>
                 </form>
           </div>
 
               
-            <section class="imageThumbnail"> 
+            <section class="imageThumbnail" id='results_div'> 
               <div class="row">
                   <div class="col-lg-6">
                       <div class="card" style="width: 18rem;">
-                          <img class="card-img-top" src="https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/Cannabis%20indica.jpeg?raw=true" alt="cannabisIndica">
+                          <img class="card-img-top" id="results_img" 
+                          src="https://github.com/AbrahamTesla/Weedinize/blob/master/public/image/Cannabis%20indica.jpeg?raw=true" 
+                          alt="cannabisIndica">
                           <div class="card-body">
-                            <h5 class="card-title">Cannabis Indica</h5>
-                            <p class="card-text">Percentage goes here %</p>
+                            <h5 class="card-title" id='results_type'>Cannabis Indica</h5>
+                            <p class="card-text" id ="results_percent">Percentage goes here %</p>
                           </div>
                         </div>
                   </div>
