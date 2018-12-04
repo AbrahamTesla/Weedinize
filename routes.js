@@ -1,10 +1,11 @@
 var router = require("express").Router();
 var path = require("path");
-
+const ENV = require("dotenv");
+ENV = dotenv.config();
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
-    apiKey: '7934b3f0139445e68b0ce91485e6c43e'
+    apiKey: process.env.apiKey
 });
 
 var calculate_type = async (url) => {
